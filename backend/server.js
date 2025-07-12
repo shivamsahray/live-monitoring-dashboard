@@ -15,6 +15,27 @@ app.get('/api/devices', (req, res) => {
     });
 });
 
+app.get('/api/recordings', (req, res) => {
+  const { device, date } = req.query;
+
+  if (!device || !date) {
+    return res.status(400).json({ error: 'Device and date required' });
+  }
+
+  const start = `${date} 00:00:00`;
+  const end = `${date} 23:59:59`;
+
+  const query = `
+    SELECT * FROM recordings
+    WHERE device_id = ? AND date_time BETWEEN ? AND ?
+  `;
+
+  db.query(query, [device, start, end], (err, results) => {
+    if (err) return res.status(500).json({ error: err });
+    res.json(results);
+  });
+});
+
 const server = http.createServer(app);
 const { Server } = require('socket.io');
 const io = new Server(server, {
