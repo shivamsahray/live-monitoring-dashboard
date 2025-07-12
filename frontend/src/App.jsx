@@ -3,6 +3,7 @@ import './App.css'
 import DeviceCard from './components/DeviceComponent'
 import Dashboard from './pages/Dashboard'
 import { Route, Routes } from 'react-router-dom'
+import Recordings from './pages/Recordings'
 
 function App() {
   
@@ -10,7 +11,8 @@ function App() {
   return (
     <>
     <Routes>
-      <Route path='/' element={<Dashboard />} /> 
+      <Route path='/' element={<Dashboard />} />
+      <Route path='/recordings/:deviceID' element={<Recordings />} />
     </Routes>
     </>
   )
