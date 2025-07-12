@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { io } from 'socket.io-client'
 import DeviceCard from "../components/DeviceComponent";
+
+const socket = io('http://localhost:5000');
 
 const Dashboard = () => {
     const [devices, setDevices] = useState([]);
@@ -12,6 +15,15 @@ const Dashboard = () => {
         .catch((err) => {
             console.error("Failed to fetch devices: ", err);
         });
+
+        //listen for live updates
+        socket.on('device-update', (update) => {
+            setDevices((prev) => prev.map((device) =>
+                device.id === update.id ? { ...device, ...update} : device
+            ));
+        });
+
+        return () => socket.disconnect();
     }, []);
 
     return (
