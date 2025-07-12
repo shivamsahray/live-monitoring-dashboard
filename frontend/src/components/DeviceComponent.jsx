@@ -14,7 +14,7 @@ const DeviceCard = ({device}) => {
             <div className="bg-white p-2 mb-1">Line 3: UNKNOWN | Voltage: N/A</div>
             <div className="bg-white p-2 mb-1">Line 4: UNKNOWN | Channel: N/A</div>
 
-            <button className="bg-blue-500 text-white px-3 py-1 rounded">Recordings</button>
+            <button onClick={() => navigate(`/recordings/${device.id}`)} className="bg-blue-100  px-3 py-1 rounded">Recordings</button>
         </div>
         </>
     )

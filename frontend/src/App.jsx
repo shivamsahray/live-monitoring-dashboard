@@ -12,7 +12,7 @@ function App() {
     <>
     <Routes>
       <Route path='/' element={<Dashboard />} />
-      <Route path='/recordings/:deviceID' element={<Recordings />} />
+      <Route path='/recordings/:deviceId' element={<Recordings />} />
     </Routes>
     </>
   )

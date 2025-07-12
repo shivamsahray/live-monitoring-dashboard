@@ -53,7 +53,7 @@ const Dashboard = () => {
                             key={i}
                             onClick={() => setCurrentPage(i + 1)}
                             className={`px-4 py-2 rounded border ${
-                                currentPage === i+1 ? 'bg-blue-500 text-white' : 'bg-gray-100'
+                                currentPage === i+1 ? 'bg-blue-500' : 'bg-gray-100'
                             }`}>
                                 {i+1}
                             </button>
