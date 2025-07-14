@@ -3,7 +3,7 @@ import axios from "axios";
 import { io } from 'socket.io-client'
 import DeviceCard from "../components/DeviceComponent";
 
-const socket = io('http://localhost:5000');
+const socket = io('http://localhost:5000/');
 
 const Dashboard = () => {
     const [devices, setDevices] = useState([]);
@@ -12,9 +12,9 @@ const Dashboard = () => {
     const devicesPerPage = 8;
     const totalPages = Math.ceil(devices.length / devicesPerPage);
 
-
     useEffect(() => {
         axios.get('http://localhost:5000/api/devices').then((res) => {
+            console.log(res.data);
             setDevices(res.data);
         })
         .catch((err) => {
