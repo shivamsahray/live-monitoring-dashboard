@@ -1,9 +1,21 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const cors = require('cors');
 const db = require('./db');
 const http = require('http');
 const { Socket } = require('socket.io');
+
+const mysql = require('mysql2');
+
+const connection = mysql.createConnection({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME
+});
+
 
 app.use(cors());
 app.use(express.json());
