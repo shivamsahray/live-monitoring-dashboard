@@ -1,10 +1,10 @@
 const mysql = require('mysql2');
 
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: 'switchback.proxy.rlwy.net',
     user: 'root',
-    password: '9540301762',
-    database: 'live_monitoring'
+    password: 'lSAsasLVhaXOOCfTkSaqcHrfAwwMKGHs',
+    database: 'railway'
 });
 
 connection.connect((err) => {
